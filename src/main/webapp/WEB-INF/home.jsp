@@ -18,7 +18,7 @@
 <title>Home</title>
 </head>
 <body>
-	<h1>My Gold: <c:out value="${thisUser.getGold() }" /></h1>
+	<h1>My Gold: <c:out value="${thisUser.getGold().getGold()}" /></h1>
 	<c:forEach items = "${ thisUser.getPets()}" var="onePet" >
 		<div>
 			<h1>${onePet.getPetName()}</h1>
@@ -31,9 +31,7 @@
 		<button>Clean Me</button>
 		<button>Feed Me</button>
 		<a class="btn btn-primary" href="/play">Play with Me</a>
-
-		<a class="btn btn-success" href="/contest/${onePet.getId() }">Contest</a>
-	
+		<a class="btn btn-success" href="/contest/${onePet.id}">Contest</a>
 	</c:forEach>
 	
 	

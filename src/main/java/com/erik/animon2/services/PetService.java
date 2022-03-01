@@ -8,60 +8,60 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.erik.animon2.models.Pet;
+import com.erik.animon2.models.User;
 import com.erik.animon2.repositories.PetRepo;
+import com.erik.animon2.repositories.UserRepo;
 
 @Service
 public class PetService {
 	@Autowired
 	private PetRepo petRepo;
-	
+	@Autowired
+	private UserRepo userRepo;
+
 	public List<Pet> allPets() {
 		return petRepo.findAll();
 	}
-	
+
 	public Pet createPet(Pet p) {
 		return petRepo.save(p);
 	}
-	
-	
+
 	public Pet findPet(Long id) {
 		Optional<Pet> optionalPet = petRepo.findById(id);
-		if(optionalPet.isPresent()) {
+		if (optionalPet.isPresent()) {
 			return optionalPet.get();
-		}else {
+		} else {
 			return null;
 		}
 	}
-	
+
 	public Pet updatePet(Pet p) {
 		return petRepo.save(p);
 	}
-	
+
 	public void deletePet(Long id) {
 		petRepo.deleteById(id);
 	}
-	
-    
-    // Random Contest Winner
-    
-   public Pet contest(Pet p) {
-	  int min = 1;
-	  int max = 3;
-	  
-	  Random random = new Random();
-	  
-	  int value = random.nextInt(max + min) +min;
-	  System.out.println(p.getOwner().getGold());
-	  if(value == 1) {
-		  p.getOwner().setGold(p.getOwner().getGold()+200);
-		  
-	  }else if(value == 2) {
-		  p.getOwner().setGold(p.getOwner().getGold()+100);
-	  }else {
-		  p.getOwner().setGold(p.getOwner().getGold()+50);
-	  }System.out.println(p.getOwner().getGold());
-	  return petRepo.save(p);
-   }
-	
-	
+
+	// Random Contest Winner
+
+	public void contest(User p) {
+		int min = 1;
+		int max = 3;
+
+		Random random = new Random();
+
+		int value = random.nextInt(max + min) + min;
+		System.out.println(p.getGold());
+		if (value == 1) {
+			p.getGold().setGold(p.getGold().getGold() + 200);
+		} else if (value == 2) {
+			p.getGold().setGold(p.getGold().getGold() + 100);
+		} else {
+			p.getGold().setGold(p.getGold().getGold() + 50);
+		}
+
+	}
+
 }

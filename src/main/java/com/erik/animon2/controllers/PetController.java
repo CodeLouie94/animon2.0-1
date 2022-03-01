@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.erik.animon2.models.Pet;
 import com.erik.animon2.models.User;
+import com.erik.animon2.services.GoldService;
 import com.erik.animon2.services.PetService;
 import com.erik.animon2.services.UserService;
 
@@ -26,7 +27,8 @@ public class PetController {
 	private UserService userServ;
 	@Autowired
 	private PetService petServ;
-	
+	@Autowired
+	private GoldService goldServ;
 	
 	//CREATE PET FORM ##############################################
 	@GetMapping("/new/pet")
@@ -65,9 +67,9 @@ public class PetController {
 			return "redirect:/";
 		}else {
 			User thisUser = userServ.findOne(userId);
-			List<Pet> allPets = petServ.allPets();
+			List<Pet> myPet = thisUser.getPets();
+			model.addAttribute("myPet", myPet);
 			model.addAttribute("thisUser", thisUser);
-			model.addAttribute("allPets", allPets); //EVERYONES PETS IN DB????
 			return "home.jsp";
 		}
 	}
@@ -97,31 +99,20 @@ public class PetController {
     	
     }
     
+    
     @GetMapping("/contest/{id}")
-    public String contestRedirect(@PathVariable("id") Long id, HttpSession session, Model model) {
-		Pet pet = petServ.findPet(id);
-		petServ.contest(pet);
-		return "redirect:/contest";
-    }
-    
-    
-    
-    // Contest Render JSP ########################
-    @GetMapping("/contest")
-    public String contestRender(@PathVariable("id") Long id, HttpSession session, Model model) {
+    public String contest(@PathVariable("id") Long id, HttpSession session) {
     	Long userId = (Long) session.getAttribute("user_id");
     	if (userId == null) {
     		return "redirect:/";
     	} else {
-
-    		User thisUser = userServ.findOne(userId);
-    		userServ.updateUser(thisUser);
-    		model.addAttribute("thisUser", thisUser);
+    		User user = userServ.findOne(userId);
+    		petServ.contest(user);
+    		goldServ.updateGold(user.getGold());
     		return "contest.jsp";
     	}
     }
-	
-	
+    
 	
 
 }
