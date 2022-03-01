@@ -10,14 +10,14 @@ import org.springframework.stereotype.Service;
 import com.erik.animon2.models.Pet;
 import com.erik.animon2.models.User;
 import com.erik.animon2.repositories.PetRepo;
-import com.erik.animon2.repositories.UserRepo;
+
 
 @Service
 public class PetService {
 	@Autowired
 	private PetRepo petRepo;
-	@Autowired
-	private UserRepo userRepo;
+
+
 
 	public List<Pet> allPets() {
 		return petRepo.findAll();

@@ -18,13 +18,11 @@
 <title>Home</title>
 </head>
 <body>
-<<<<<<< HEAD
-	<h1>My Gold: <c:out value="${thisUser.getGold() }" /></h1>
-	<progress class=" progress-bar"  value="${thisUser.getGold() }" max="100" ></progress>
-	
-=======
+
 	<h1>My Gold: <c:out value="${thisUser.getGold().getGold()}" /></h1>
->>>>>>> 6526ee27b0753f0fa22400d5cb4b24d3e33aee4c
+	<progress class=" progress-bar"  value="${thisUser.getGold().getGold() }" max="100" ></progress>
+	
+
 	<c:forEach items = "${ thisUser.getPets()}" var="onePet" >
 		<div>
 
@@ -45,15 +43,15 @@
 		<button>Clean Me</button>
 		<a class="btn btn-secondary" href="/feed/${onePet.getId() }">Feed Me</a>
 		<a class="btn btn-primary" href="/play">Play with Me</a>
-<<<<<<< HEAD
+
 
 		<a class="btn btn-success" href="/contest/${onePet.getId() }">Contest</a>
 		<a class="btn btn-info" href="/sleep/${onePet.getId() }">Sleep</a>
 		
 	
-=======
-		<a class="btn btn-success" href="/contest/${onePet.id}">Contest</a>
->>>>>>> 6526ee27b0753f0fa22400d5cb4b24d3e33aee4c
+
+
+
 	</c:forEach>
 	
 	

@@ -99,7 +99,7 @@ public class PetController {
     	
     }
     
-    
+    // Contest JSP Render ################################
     @GetMapping("/contest/{id}")
     public String contest(@PathVariable("id") Long id, HttpSession session) {
     	Long userId = (Long) session.getAttribute("user_id");
@@ -113,8 +113,8 @@ public class PetController {
     	}
     }
     
-<<<<<<< HEAD
-    // Sleep Me
+
+    // Sleep Me ###################################
     @GetMapping("/sleep/{id}")
     public String sleep(@PathVariable("id") Long id) {
         Pet pet = petServ.findPet(id);
@@ -123,7 +123,7 @@ public class PetController {
         return "redirect:/home";
     }
     
-    // FeedMe
+    // FeedMe ##################################
     @GetMapping("/feed/{id}")
     public String feed(@PathVariable("id") Long id) {
         Pet pet = petServ.findPet(id);
@@ -134,8 +134,7 @@ public class PetController {
 	
     
 	
-=======
->>>>>>> 6526ee27b0753f0fa22400d5cb4b24d3e33aee4c
+
 	
 
 }
