@@ -86,8 +86,22 @@ public class Pet {
             setHealth(this.getHealth() - 5);
         }
     }
-
+    
+    // pet Sleep
+    public void sleep() {
+    	if(this.getEnergy() +30 <= 100) {
+    	setEnergy(this.getEnergy()+30);
+    	
+    	}
+    }
 	
+    
+  //Feed
+    public void feed() {
+        if (this.getHealth() + 20 <= 100) {
+            setHealth(this.getHealth() + 20);
+        }
+    }
 	//GETTERS AND SETTERS
 	public Long getId() {
 		return id;

@@ -19,20 +19,32 @@
 </head>
 <body>
 	<h1>My Gold: <c:out value="${thisUser.getGold() }" /></h1>
+	<progress class=" progress-bar"  value="${thisUser.getGold() }" max="100" ></progress>
+	
 	<c:forEach items = "${ thisUser.getPets()}" var="onePet" >
 		<div>
+
 			<h1>${onePet.getPetName()}</h1>
-			<h2>Energy: ${onePet.getEnergy()}</h2>
+				<h2>Energy: ${onePet.getEnergy()}</h2>
+				<progress class="progress-bar" value="${onePet.getEnergy()}" max="100" ></progress>
+			
 			<h2>Happiness: ${onePet.getHappiness()}</h2>
+			<progress class="progress-bar" value="${onePet.getHappiness()}" max="100" ></progress>
+			
 			<h2>Hunger: ${onePet.getHealth()}</h2>
+			<progress class="progress-bar" value="${onePet.getHealth()}" max="100" ></progress>
+			
 			<h2>Clean: ${onePet.getCleanliness()}</h2>
+			<progress class="progress-bar" value="${onePet.getCleanliness()}" max="10" ></progress>
 		</div>
 		<img src="/images/${onePet.getType()}pic.webp" alt="Failed image: ${onePet.getType()}" />
 		<button>Clean Me</button>
-		<button>Feed Me</button>
+		<a class="btn btn-secondary" href="/feed/${onePet.getId() }">Feed Me</a>
 		<a class="btn btn-primary" href="/play">Play with Me</a>
 
 		<a class="btn btn-success" href="/contest/${onePet.getId() }">Contest</a>
+		<a class="btn btn-info" href="/sleep/${onePet.getId() }">Sleep</a>
+		
 	
 	</c:forEach>
 	

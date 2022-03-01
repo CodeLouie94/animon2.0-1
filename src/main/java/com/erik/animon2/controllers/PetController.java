@@ -120,7 +120,26 @@ public class PetController {
     		return "contest.jsp";
     	}
     }
+    
+    // Sleep Me
+    @GetMapping("/sleep/{id}")
+    public String sleep(@PathVariable("id") Long id) {
+        Pet pet = petServ.findPet(id);
+        pet.sleep();
+        petServ.updatePet(pet);
+        return "redirect:/home";
+    }
+    
+    // FeedMe
+    @GetMapping("/feed/{id}")
+    public String feed(@PathVariable("id") Long id) {
+        Pet pet = petServ.findPet(id);
+        pet.feed();
+        petServ.updatePet(pet);
+        return "redirect:/home";
+    }
 	
+    
 	
 	
 
