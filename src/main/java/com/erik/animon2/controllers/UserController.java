@@ -11,8 +11,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.erik.animon2.models.Gold;
 import com.erik.animon2.models.LoginUser;
 import com.erik.animon2.models.User;
+import com.erik.animon2.services.GoldService;
 import com.erik.animon2.services.UserService;
 
 @Controller
@@ -20,6 +22,8 @@ public class UserController {
 
 	@Autowired
 	private UserService userServ;
+	@Autowired
+	private GoldService goldServ;
 	
 	
 	// Login Landing Page
@@ -48,6 +52,8 @@ public class UserController {
 			model.addAttribute("newLogin", new LoginUser());
 			return "index.jsp";
 		} else {
+			Gold gold = new Gold(newUser);
+			goldServ.createGold(gold);
 			sesh.setAttribute("user_id", newUser.getId());
 			return "redirect:/new/pet";
 		}
