@@ -19,7 +19,7 @@
 </head>
 <style>
 body {
-	background-image: url("/images/backgrounds/petshopBG.jpeg");
+	background-image: url("/images/backgrounds/storeBG.png");
 	background-size: cover;
 }
 </style>

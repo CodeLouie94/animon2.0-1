@@ -61,22 +61,23 @@ body {
 				</div>
 			</div>
 		</div>
-		<div class="d-flex justify-content-center  ">
-			<div class="d-flex justify-content-around w-25 bg-danger p-2 text">
+		<div class="d-flex justify-content-center">
+			<div class="d-flex justify-content-around w-50 bg-danger p-2" style="position: fixed; left: 900px; top: 50px;">
 				<a class="btn btn-light p-2" href="/clean/${onePet.getId() }">Clean
 					Me</a> <a class="btn btn-secondary p-2" href="/feed/${onePet.getId() }">Feed
 					Me</a> <a class="btn btn-primary p-2" href="/play">Play with Me</a> <a
 					class="btn btn-success p-2" href="/contest/${onePet.getId() }">Contest</a>
 				<a class="btn btn-info p-2" href="/sleep/${onePet.getId() }">Sleep</a>
+				<a class="btn btn-warning"href="/store">Store</a>
 			</div>
 		</div>
 
 
 
 	</c:forEach>
-			<p>
-		<a href="/logout">logout</a>
-		</p>
+	<div style="position: fixed; left: 50px; top: 700px;">
+		<a class="btn btn-danger text-dark" href="/logout">logout</a>
+	</div>
 
 
 </body>

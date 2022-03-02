@@ -101,14 +101,15 @@ public class PetController {
     
     // Contest JSP Render ################################
     @GetMapping("/contest/{id}")
-    public String contest(@PathVariable("id") Long id, HttpSession session) {
+    public String contest(@PathVariable("id") Long id, HttpSession session, Model model) {
     	Long userId = (Long) session.getAttribute("user_id");
     	if (userId == null) {
     		return "redirect:/";
     	} else {
     		User user = userServ.findOne(userId);
-    		petServ.contest(user);
+    		int medal = petServ.contest(user);
     		goldServ.updateGold(user.getGold());
+    		model.addAttribute("medal", medal);
     		return "contest.jsp";
     	}
     }
@@ -140,6 +141,7 @@ public class PetController {
     	petServ.updatePet(pet);
     	return "redirect:/home";
     }
+    
 	
     
 	

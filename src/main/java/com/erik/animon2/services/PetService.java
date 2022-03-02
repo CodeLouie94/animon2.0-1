@@ -46,14 +46,13 @@ public class PetService {
 
 	// Random Contest Winner
 
-	public void contest(User p) {
+	public Integer contest(User p) {
 		int min = 1;
 		int max = 3;
 
 		Random random = new Random();
 
 		int value = random.nextInt(max + min) + min;
-		System.out.println(p.getGold());
 		if (value == 1) {
 			p.getGold().setGold(p.getGold().getGold() + 200);
 		} else if (value == 2) {
@@ -61,7 +60,7 @@ public class PetService {
 		} else {
 			p.getGold().setGold(p.getGold().getGold() + 50);
 		}
-
+		return value;
 	}
 
 }

@@ -25,7 +25,14 @@ body {
 </style>
 <body>
 	<h1>Winner</h1>
+	<c:choose>
+   	<c:when test="${medal eq 1}"><img src="/images/contest/goldmedal.jpg" alt="gold meadal img" /></c:when>
+   	<c:when test="${medal eq 2 }"><img src="/images/contest/silvermedal.jpg" alt="silver medal img" /></c:when> 
+   	<c:otherwise><img src="/images/contest/bronzemedal.jpg" alt="bronze meadal img" /></c:otherwise>    
+	</c:choose>
+	
 	
 	<a href="/home" class="btn btn-success">Job Well Done</a>
+	
 </body>
 </html>
