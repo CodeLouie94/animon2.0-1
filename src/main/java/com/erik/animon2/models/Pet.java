@@ -83,10 +83,11 @@ public class Pet {
                 setHappiness(this.getHappiness() + 10);
             }
             setHealth(this.getHealth() - 5);
+            setCleanliness(this.getCleanliness()-1);
         }
     }
     
-    // pet Sleep
+    // Pet Sleep
     public void sleep() {
     	if(this.getEnergy() +30 <= 100) {
     	setEnergy(this.getEnergy()+30);
@@ -101,6 +102,14 @@ public class Pet {
             setHealth(this.getHealth() + 20);
         }
     }
+    
+    //Clean
+    public void clean() {
+    	if (this.getCleanliness() + 1 <= 10) {
+    		setCleanliness(this.getCleanliness() + 1 );
+    	}
+    }
+    
 	//GETTERS AND SETTERS
 	public Long getId() {
 		return id;

@@ -80,7 +80,14 @@ public class UserController {
 			}
 
 		}
-
+		
+		
+		// Logout
+		@GetMapping("/logout")
+		public String logout(HttpSession sesh) {
+			sesh.invalidate();
+			return "redirect:/";
+		}
 		
 		
 		

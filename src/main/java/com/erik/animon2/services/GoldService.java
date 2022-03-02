@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.erik.animon2.models.Gold;
 import com.erik.animon2.repositories.GoldRepo;
 
+
 @Service
 public class GoldService {
 	@Autowired
@@ -40,7 +41,8 @@ public class GoldService {
 	}
 		
 	
-		
+
+	
 		
 	
 }

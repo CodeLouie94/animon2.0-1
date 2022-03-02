@@ -18,6 +18,12 @@
 <script src="/webjars/jquery/jquery.min.js"></script>
 <script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
 </head>
+<style>
+body {
+	background-image: url("/images/backgrounds/loginBG.png");
+	background-size: cover;
+}
+</style>
 <body>
 	<h1 class="text-center " style="font-family: 'Bradley Hand', 'cursive'  ">ANIMON</h1>
 	<div class="d-flex container justify-content-around"  >

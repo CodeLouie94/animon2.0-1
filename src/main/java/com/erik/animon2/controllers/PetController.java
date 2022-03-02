@@ -123,13 +123,22 @@ public class PetController {
         return "redirect:/home";
     }
     
-    // FeedMe ##################################
+    // Feed Me ##################################
     @GetMapping("/feed/{id}")
     public String feed(@PathVariable("id") Long id) {
         Pet pet = petServ.findPet(id);
         pet.feed();
         petServ.updatePet(pet);
         return "redirect:/home";
+    }
+    
+    // Clean Me ############################
+    @GetMapping("/clean/{id}")
+    public String clean(@PathVariable ("id") Long id) {
+    	Pet pet = petServ.findPet(id);
+    	pet.clean();
+    	petServ.updatePet(pet);
+    	return "redirect:/home";
     }
 	
     

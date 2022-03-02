@@ -1,60 +1,83 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<!-- c:out ; c:forEach etc. --> 
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<!-- c:out ; c:forEach etc. -->
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<!-- Formatting (dates) --> 
+<!-- Formatting (dates) -->
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!-- form:form -->
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!-- for rendering errors on PUT routes -->
-<%@ page isErrorPage="true" %>
+<%@ page isErrorPage="true"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-    <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/css/main.css"> <!-- change to match your file/naming structure -->
-    <script src="/webjars/jquery/jquery.min.js"></script>
-    <script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="/css/main.css">
+<!-- change to match your file/naming structure -->
+<script src="/webjars/jquery/jquery.min.js"></script>
+<script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
 <title>Home</title>
 </head>
+<style>
+body {
+	background-image: url("/images/backgrounds/louis2BG.jpg");
+	background-size: cover;
+}
+</style>
 <body>
 
-	<h1>My Gold: <c:out value="${thisUser.getGold().getGold()}" /></h1>
-	<progress class=" progress-bar"  value="${thisUser.getGold().getGold() }" max="100" ></progress>
-	
 
-	<c:forEach items = "${ thisUser.getPets()}" var="onePet" >
-		<div>
+	<c:forEach items="${ thisUser.getPets()}" var="onePet">
+		<div style="position: absolute; left: 50px;">
+			<h1 style="color: #ffffff">${onePet.getPetName()}</h1>
+			<h2 style="color: #ffffff;">
+				My Gold:
+				<c:out value="${thisUser.getGold().getGold()}" />
+			</h2>
 
-			<h1>${onePet.getPetName()}</h1>
-				<h2>Energy: ${onePet.getEnergy()}</h2>
-				<progress class="progress-bar" value="${onePet.getEnergy()}" max="100" ></progress>
-			
-			<h2>Happiness: ${onePet.getHappiness()}</h2>
-			<progress class="progress-bar" value="${onePet.getHappiness()}" max="100" ></progress>
-			
-			<h2>Hunger: ${onePet.getHealth()}</h2>
-			<progress class="progress-bar" value="${onePet.getHealth()}" max="100" ></progress>
-			
-			<h2>Clean: ${onePet.getCleanliness()}</h2>
-			<progress class="progress-bar" value="${onePet.getCleanliness()}" max="10" ></progress>
+			<h2 style="color: #ffffff">Energy: ${onePet.getEnergy()}</h2>
+			<progress class="progress-bar" value="${onePet.getEnergy()}"
+				max="100"></progress>
+
+			<h2 style="color: #ffffff">Happiness: ${onePet.getHappiness()}</h2>
+			<progress class="progress-bar" value="${onePet.getHappiness()}"
+				max="100"></progress>
+
+			<h2 style="color: #ffffff">Hunger: ${onePet.getHealth()}</h2>
+			<progress class="progress-bar" value="${onePet.getHealth()}"
+				max="100"></progress>
+
+			<h2 style="color: #ffffff">Clean: ${onePet.getCleanliness()}</h2>
+			<progress class="progress-bar" value="${onePet.getCleanliness()}"
+				max="10"></progress>
 		</div>
-		<img src="/images/${onePet.getType()}pic.webp" alt="Failed image: ${onePet.getType()}" />
-		<button>Clean Me</button>
-		<a class="btn btn-secondary" href="/feed/${onePet.getId() }">Feed Me</a>
-		<a class="btn btn-primary" href="/play">Play with Me</a>
-
-
-		<a class="btn btn-success" href="/contest/${onePet.getId() }">Contest</a>
-		<a class="btn btn-info" href="/sleep/${onePet.getId() }">Sleep</a>
-		
-	
+		<div class="container">
+			<div class="row mb-4 c">
+				<div class="col-md-2 p-5 gray">
+					<img style="background-color: #ffffff00; border: none"
+						class="img_test" src="/images/${onePet.getType()}pic.png"
+						alt="Failed image: ${onePet.getType()}" />
+				</div>
+			</div>
+		</div>
+		<div class="d-flex justify-content-center  ">
+			<div class="d-flex justify-content-around w-25 bg-danger p-2 text">
+				<a class="btn btn-light p-2" href="/clean/${onePet.getId() }">Clean
+					Me</a> <a class="btn btn-secondary p-2" href="/feed/${onePet.getId() }">Feed
+					Me</a> <a class="btn btn-primary p-2" href="/play">Play with Me</a> <a
+					class="btn btn-success p-2" href="/contest/${onePet.getId() }">Contest</a>
+				<a class="btn btn-info p-2" href="/sleep/${onePet.getId() }">Sleep</a>
+			</div>
+		</div>
 
 
 
 	</c:forEach>
-	
-	
-	
+			<p>
+		<a href="/logout">logout</a>
+		</p>
+
+
 </body>
 </html>

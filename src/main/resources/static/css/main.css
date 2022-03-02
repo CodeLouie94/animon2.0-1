@@ -1,0 +1,32 @@
+@charset "UTF-8";
+
+.test {
+    color: red;
+}
+
+.img_test {
+/*     outline: 7px solid red; */
+    margin: 5px;
+    width: 250px;
+    height: 250px;
+    
+    position: relative;
+    animation-name: move;
+    animation-duration: 7s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    
+}
+
+@keyframes move {
+    0%   {left: 0px;   top:0px;}
+      25%  {left: 100px; top:0px;}
+      48%  {left: 100px; top:-5px;}
+      50%  {left: 150px; top:-15px;}
+      53%  {left: 200px; top:-25px;}
+      75%  {left: 280px; top:0px;}
+      77%  {left: 290px; top:-5px;}
+      79%  {left: 300px; top:-10px;}
+      
+      100% {left: 400px; top:0px;}
+}

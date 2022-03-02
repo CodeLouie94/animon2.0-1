@@ -59,9 +59,13 @@ public class User {
     @OneToMany(mappedBy = "owner", fetch = FetchType.LAZY)
     private List<Pet> pets;
     
+    
+    
     @OneToOne(mappedBy ="goldOwner", cascade=CascadeType.ALL, fetch = FetchType.LAZY)
     private Gold gold;
     
+    @OneToMany(mappedBy ="customer", fetch = FetchType.LAZY)
+    private List<Item> items;
 	
 
 	public List<Pet> getPets() {
@@ -149,6 +153,14 @@ public class User {
 
 	public void setGold(Gold gold) {
 		this.gold = gold;
+	}
+
+	public List<Item> getItems() {
+		return items;
+	}
+
+	public void setItems(List<Item> items) {
+		this.items = items;
 	}
 
 	

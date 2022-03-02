@@ -17,9 +17,15 @@
     <script src="/webjars/jquery/jquery.min.js"></script>
     <script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
 </head>
+<style>
+body {
+	background-image: url("/images/backgrounds/contestBG.jpeg");
+	background-size: cover;
+}
+</style>
 <body>
 	<h1>Winner</h1>
 	
-	<a href="/home">Job Well Done</a>
+	<a href="/home" class="btn btn-success">Job Well Done</a>
 </body>
 </html>
