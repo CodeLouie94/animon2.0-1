@@ -1,6 +1,5 @@
 package com.erik.animon2.models;
 
-
 import java.util.Date;
 import java.util.List;
 
@@ -47,26 +46,22 @@ public class User {
 	@NotEmpty(message = "Confirm Password is required!")
 	@Size(min = 8, max = 128, message = "Confirm Password must be between 8 and 128 characters")
 	private String confirm;
-	
 
 	@Column(updatable = false)
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date createdAt;
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date updatedAt;
-	
-    //1:M
-    @OneToMany(mappedBy = "owner", fetch = FetchType.LAZY)
-    private List<Pet> pets;
-    
-    
-    
-    @OneToOne(mappedBy ="goldOwner", cascade=CascadeType.ALL, fetch = FetchType.LAZY)
-    private Gold gold;
-    
-    @OneToMany(mappedBy ="customer", fetch = FetchType.LAZY)
-    private List<Item> items;
-	
+
+	// 1:M
+	@OneToMany(mappedBy = "owner", fetch = FetchType.LAZY)
+	private List<Pet> pets;
+
+	@OneToOne(mappedBy = "goldOwner", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private Gold gold;
+
+	@OneToMany(mappedBy = "customer", fetch = FetchType.LAZY)
+	private List<Item> items;
 
 	public List<Pet> getPets() {
 		return pets;
@@ -85,11 +80,10 @@ public class User {
 	protected void onUpdate() {
 		this.updatedAt = new Date();
 	}
-	
-	
-	//SETTERS AND GETTERS
-	public User() {}
-	
+
+	// SETTERS AND GETTERS
+	public User() {
+	}
 
 	public Long getId() {
 		return id;
@@ -163,6 +157,46 @@ public class User {
 		this.items = items;
 	}
 
+	// display items functions
+	public int foodCount(List<Item> items) {
+		int counter = 0;
+		for (Item item : items) {
+			if (item.getName().equals("Pet Food")) {
+				counter++;		
+			}
+		}
+		return counter;
+	}
 	
+	public int soapCount(List<Item> items) {
+		int counter = 0;
+		for (Item item : items) {
+			if (item.getName().equals("Pet Soap")) {
+				counter++;
+			}
+		}
+
+		return counter;
+	}
 	
+	public int ballCount(List<Item> items) {
+		int counter = 0;
+		for (Item item : items) {
+			if (item.getName().equals("Toy Ball")) {
+				counter++;
+			}
+		}
+		return counter;
+	}
+	
+	public int ropeCount(List<Item> items) {
+		int counter = 0;
+		for (Item item : items) {
+			if (item.getName().equals("Toy Rope")) {
+				counter++;
+			}
+		}
+		return counter;
+	}
+
 }

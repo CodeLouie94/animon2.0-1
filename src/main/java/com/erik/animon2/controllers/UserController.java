@@ -35,7 +35,7 @@ public class UserController {
 		} else {
 			model.addAttribute("newUser", new User());
 			model.addAttribute("newLogin", new LoginUser());
-			return "index.jsp";
+			return "index1.jsp";
 		}
 
 	}
@@ -50,7 +50,7 @@ public class UserController {
 		
 		if(result.hasErrors()) {
 			model.addAttribute("newLogin", new LoginUser());
-			return "index.jsp";
+			return "index1.jsp";
 		} else {
 			Gold gold = new Gold(newUser);
 			goldServ.createGold(gold);

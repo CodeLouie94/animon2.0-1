@@ -20,36 +20,78 @@
 <script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
 </head>
 <style>
-body {
-	background-image: url("/images/backgrounds/outside.jpeg");
-	background-size: cover;
-	
-}
+
 </style>
-<body>
-	<h1>Play With Me</h1>
+<body class="body_play">
+	
 	<c:forEach items="${ thisUser.getPets()}" var="onePet">
-		<div>
-			<h1>${onePet.getPetName()}</h1>
-			<h2>Energy: ${onePet.getEnergy()}</h2>
-			<h2>Happiness: ${onePet.getHappiness()}</h2>
-			<h2>Hunger: ${onePet.getHealth()}</h2>
-			<h2>Clean: ${onePet.getCleanliness()}</h2>
+	
+	
+		<!------------------------------------- PET BARS/INVENTORY ---------------------------------->
+	<div class="hud">
+		<div class="status">
+			<div class="bars">
+				<!-- GOLD -->	
+				<h2 class="mb-3 text-warning">
+					Gold: <c:out value="${thisUser.getGold().getGold()}" />
+				</h2>
+				<!-- ENERGY -->
+				<h2>Energy: ${onePet.getEnergy()}</h2>
+				<progress class="progress-bar" value="${onePet.getEnergy()}"
+					max="100"></progress>
+				<!-- HAPPINESS -->
+				<h2>Happiness: ${onePet.getHappiness()}</h2>
+				<progress class="progress-bar" value="${onePet.getHappiness()}"
+					max="100"></progress>
+				<!-- HUNGER -->
+				<h2>Hunger: ${onePet.getHealth()}</h2>
+				<progress class="progress-bar" value="${onePet.getHealth()}"
+					max="100"></progress>
+				<!-- CLEAN -->
+				<h2>Clean: ${onePet.getCleanliness()}</h2>
+				<progress class="progress-bar" value="${onePet.getCleanliness()}"
+					max="10"></progress>
+			</div>
+			
+				<!---------------------------------------- INVENTORY ------------------------------------------->
+			<div class="inventory">
+				<h2>Ball count: <c:out value="${thisUser.ballCount(thisUser.getItems())}" /> </h2>
+				<h2>Rope count: <c:out value="${thisUser.ropeCount(thisUser.getItems())}" /></h2>
+			</div>
 		</div>
+
+	
+			<!-------------------------------- 	NAV BAR -------------------------->
+		<div class="body_nav_container">
+		<!------------------------------------- PET NAME ---------------------------------->		
+		<h1 class="pet_name"><c:out value="${onePet.getPetName()}" /></h1>
+			<div class="body_nav_play" >
+				<a href="/home" class="btn btn-warning">Home</a>
+
+				<a class="btn btn-primary" href="/rope/${onePet.getId() }">Play Tug of War</a>
+				
+				<a class="btn btn-primary" href="/ball/${onePet.getId() }">Play ball</a>
+				
+				<a class="btn btn-primary" href="/tag/${onePet.getId() }">Play Tag</a>
+				
+			</div>
+		</div>
+	</div>
+		
+		<!-- PET IMG -->
 		<div class="container">
 			<div class="row mb-4 c">
 				<div class="col-md-2 p-5 gray">
 					<img style="background-color: #ffffff00; border: none"
-						class="img_test" src="/images/${onePet.getType()}pic.png"
+						class="img_play" src="/images/${onePet.getType()}pic.png"
 						alt="Failed image: ${onePet.getType()}" />
 				</div>
 			</div>
 		</div>
-		<button>Throw Ball</button>
-		<button>Tug of War</button>
-		<a class="btn btn-primary" href="/play/${onePet.getId() }">Play
-			Tag</a>
+
 	</c:forEach>
-	<a href="/home" class="btn btn-warning">I'm Tired</a>
+
+	
+
 </body>
 </html>

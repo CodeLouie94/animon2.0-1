@@ -1,8 +1,10 @@
 package com.erik.animon2.services;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.Random;
+import java.util.concurrent.TimeUnit;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -60,7 +62,32 @@ public class PetService {
 		} else {
 			p.getGold().setGold(p.getGold().getGold() + 50);
 		}
+		p.getPets().get(0).setLastContest(new Date());
 		return value;
 	}
+	
+	
+	
+	public void subractHunger(Pet pet, int minutes) {
+		if(pet.getLastFed() != null) {
+			int prevHealth = pet.getHealth();
+			pet.setHealth(pet.getHealth() - (int) Math.floor(minutes/3));
+			if(prevHealth != pet.getHealth()) {
+				pet.setLastFed(new Date());
+			}			
+			if(pet.getHealth() <= 0) {
+				pet.setHealth(0);
+			}
+		
+		}
+	}
+	
+	
+	public long diff(Date date1, Date date2) {
+		long result = date2.getTime() - date1.getTime();
+		long minutes = TimeUnit.MILLISECONDS.toMinutes(result);
+		return minutes;
+	}
 
+	
 }

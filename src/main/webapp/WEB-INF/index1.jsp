@@ -19,13 +19,10 @@
 <script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
 </head>
 <style>
-body {
-	background-image: url("/images/backgrounds/loginBG.png");
-	background-size: cover;
-}
+
 </style>
-<body>
-	<h1 class="text-center " style="font-family: 'Bradley Hand', 'cursive'  ">ANIMON</h1>
+<body class="body_login">
+	<h1 class="title_login " style="">ANIMON</h1>
 	<div class="d-flex container justify-content-around"  >
 		<div style="font-family: 'Bradley Hand', 'cursive'  ">
 			<form:form action = "/register" method = "post" modelAttribute ="newUser">

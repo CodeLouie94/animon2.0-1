@@ -1,7 +1,6 @@
 package com.erik.animon2.models;
 
 import java.util.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -144,9 +143,8 @@ public class Item {
 		this.description = description;
 	}
 
-
 	
-	
+		
 	 
 	
 	
