@@ -95,7 +95,13 @@ public class Pet {
 				setHappiness(this.getHappiness() + 2);
 			}
 			setHealth(this.getHealth() - 3);
-			setCleanliness(this.getCleanliness() - 1);
+			
+			if (this.getCleanliness() - 1 >= 0) {
+				setCleanliness(this.getCleanliness() - 1);
+			}
+			if(this.getCleanliness() == 0) {
+				setHappiness(this.getHappiness() -10);
+			}
 		}
 	}
 
@@ -120,7 +126,10 @@ public class Pet {
 	public void sleep() {
 		if (this.getEnergy() + 30 <= 100) {
 			setEnergy(this.getEnergy() + 30);
-
+			
+		}
+		if (this.getHappiness() + 20 <= 100) {
+			setHappiness(this.getHappiness() + 20);
 		}
 	}
 

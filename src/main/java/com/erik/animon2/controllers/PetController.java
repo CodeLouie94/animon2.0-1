@@ -177,6 +177,11 @@ public class PetController {
 	// Feed Me ##################################
 	@GetMapping("/feed/{id}")
 	public String feed(@PathVariable("id") Long id) {
+		try {
+			Thread.sleep(1 * 1300);
+		} catch (InterruptedException ie) {
+			Thread.currentThread().interrupt();
+		}
 		Pet pet = petServ.findPet(id);
 		Boolean isFed = pet.feed();
 		if (isFed == true) {

@@ -22,6 +22,16 @@
 <style>
 </style>
 <body class="body_home">
+
+		<!-- SOUND EFFECT -->
+	<script>
+      function play() {
+        var audio = document.getElementById("audio");
+        audio.play();
+      }
+    </script>
+    
+    <audio id="audio" src="/sounds/crunch.mp3"></audio>
 	<c:forEach items="${ thisUser.getPets()}" var="onePet">
 
 		<!------------------------------------- PET BARS/INVENTORY ---------------------------------->
@@ -72,8 +82,8 @@
 					<c:out value="${onePet.getPetName()}" />
 				</h1>
 				<div class="body_nav">
-					<a class="btn btn-primary p-2" href="/play">Play with Me</a> <a
-						class="btn btn-secondary p-2" href="/feed/${onePet.getId() }">Feed Me</a> 
+					<a class="btn btn-primary p-2" href="/play">Play with Me</a> 
+					<a class="btn btn-secondary p-2" onclick="play()" href="/feed/${onePet.getId() }">Feed Me</a> 
 						<a class="btn btn-light p-2" href="/clean/${onePet.getId() }">Clean Me </a> 
 						<a class="btn btn-info p-2" href="/sleep/${onePet.getId() }">Sleep</a>
 					<c:choose>

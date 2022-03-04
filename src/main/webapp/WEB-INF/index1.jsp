@@ -18,10 +18,10 @@
 <script src="/webjars/jquery/jquery.min.js"></script>
 <script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
 </head>
-<style>
 
-</style>
 <body class="body_login">
+    
+    
 	<h1 class="title_login " style="">ANIMON</h1>
 	<div class="d-flex container justify-content-around"  >
 		<div style="font-family: 'Bradley Hand', 'cursive'  ">
@@ -67,5 +67,6 @@
 			</form:form>
 		</div>
 	</div>
+
 </body>
 </html>
